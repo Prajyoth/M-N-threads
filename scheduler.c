@@ -26,6 +26,7 @@ void * safe_mem(int op, void * arg) {
     }
 
 // Comment to check out on github --- No i don't want this
+// added another comment
 
 /* int  safe_printf(const char * format, ...) {
 	static AO_TS_t spinlock = AO_TS_INITIALIZER;
