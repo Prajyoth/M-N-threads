@@ -24,8 +24,8 @@ void * safe_mem(int op, void * arg) {
       spinlock_unlock(&spinlock);
       return result;
     }
-    
-// Comment to check out on github
+
+// Comment to check out on github --- No i don't want this
 
 /* int  safe_printf(const char * format, ...) {
 	static AO_TS_t spinlock = AO_TS_INITIALIZER;
@@ -100,7 +100,7 @@ void thread_join(struct thread* t)
 	mutex_lock(current_thread->m);  //is this needed? makes no difference
 	while(t->state != DONE)
 	{
-		condition_wait(t->c,current_thread->m); 
+		condition_wait(t->c,current_thread->m);
 	}
 	mutex_unlock(current_thread->m);
 }
@@ -224,7 +224,7 @@ int kernel_thread_begin(void * arg)
 
 void scheduler_begin()
 {
-	clone(kernel_thread_begin, malloc(STACK_SIZE) + STACK_SIZE, CLONE_THREAD | CLONE_VM | CLONE_SIGHAND | CLONE_FILES | CLONE_FS | CLONE_IO, (void*)"arg"); 
+	clone(kernel_thread_begin, malloc(STACK_SIZE) + STACK_SIZE, CLONE_THREAD | CLONE_VM | CLONE_SIGHAND | CLONE_FILES | CLONE_FS | CLONE_IO, (void*)"arg");
 	set_current_thread(malloc(sizeof(struct thread)));
 	current_thread->state = RUNNING;
 	current_thread->m = malloc(sizeof(struct mutex));
